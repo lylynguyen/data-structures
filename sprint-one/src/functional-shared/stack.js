@@ -1,27 +1,30 @@
-
 var Stack = function() {
+  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
+  // but try not not reference your old code in writing the new style.
   var someInstance = {};
-  var stackSize = 0;
+  someInstance.storage = {};
+  //var storage = {};
+  someInstance.stackSize = 0;
 
-  // Use an object with numeric keys to store values
-  var storage = {};
-
-  // Implement the methods below
-  someInstance.push = function(value) {
-    storage[stackSize] = value;
-    stackSize++;
-  };
-
-  someInstance.pop = function() {
-    var deleteVar = storage[stackSize-1]; 
-    delete storage[stackSize-1];      
-    stackSize--;
-    return deleteVar;
-  };
-
-  someInstance.size = function() {
-    return stackSize < 0 ? 0 : stackSize;
-  };
+  _.extend(someInstance, stackMethods);
 
   return someInstance;
 };
+
+var stackMethods = {};
+
+stackMethods.size = function(){
+	return this.stackSize < 0 ? 0 : this.stackSize;
+};
+
+stackMethods.pop = function(){
+   var result = this.storage[this.stackSize-1];
+   delete this.storage[this.stackSize-1];
+   this.stackSize--
+   return result;
+};
+
+stackMethods.push = function(value){
+  this.storage[this.stackSize] = value;
+  this.stackSize++;  
+}
