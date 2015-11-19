@@ -22,7 +22,6 @@ queueMethods.enqueue = function(value) {
 }
 
 queueMethods.size = function(){
-	debugger;
 	return (this.newVal-this.oldVal) < 0 ? 0 : (this.newVal-this.oldVal) ; 
 }
 
