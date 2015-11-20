@@ -16,6 +16,8 @@ treeMethods.addChild = function(value) {
 
 };
 
+
+
 treeMethods.contains = function(target) {
 	var result = false;
   var recurse = function(node){
